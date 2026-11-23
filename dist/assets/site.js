@@ -380,20 +380,9 @@ function openBooking(service, trigger) {
   }, 3000);
 }
 
-function setupBooking() {
-  document.querySelectorAll("[data-open-booking]").forEach(button => button.addEventListener("click", () => openBooking()));
-}
-
-function bookingModalTemplate() {
-  const target = document.querySelector("#booking-modal");
-  target?.remove();
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   injectChrome();
   injectWhatsAppSignature();
   setupConsentManager();
-  bookingModalTemplate();
-  setupBooking();
   setupPriceList();
 });
