@@ -22,6 +22,10 @@ await mkdir(dist, { recursive: true });
 for (const file of files) {
   await cp(join(root, file), join(dist, file));
 }
+await cp(join(root, "listino.html"), join(dist, "listino-epilazione-laser.html"));
+await cp(join(root, "legal.html"), join(dist, "privacy.html"));
+await cp(join(root, "legal.html"), join(dist, "privacy-policy.html"));
+await cp(join(root, "legal.html"), join(dist, "cookie-policy.html"));
 await cp(join(root, "assets"), join(dist, "assets"), { recursive: true });
 
 const hosting = await readFile(join(root, ".openai", "hosting.json"), "utf8");
