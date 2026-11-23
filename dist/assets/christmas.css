@@ -188,9 +188,83 @@ html.epilfast-christmas {
   z-index: 1;
 }
 
+/*
+ * Visual-only seasonal scene. It stays below navigation, filters, modals,
+ * consent and floating actions, and can never intercept clicks or focus.
+ */
+.epilfast-christmas .christmas-scene {
+  position: fixed;
+  z-index: 12;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  contain: strict;
+}
+
+.epilfast-christmas .christmas-snow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: .78;
+  pointer-events: none;
+}
+
+.epilfast-christmas .christmas-snow__flake {
+  position: absolute;
+  top: -18px;
+  left: var(--snow-left, 50%);
+  width: var(--snow-size, 7px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 0 7px rgba(255, 255, 255, .68);
+  opacity: var(--snow-opacity, .7);
+  animation: christmas-snow-fall var(--snow-duration, 9s) linear var(--snow-delay, 0s) infinite;
+  will-change: transform;
+}
+
+.epilfast-christmas .christmas-santa {
+  position: absolute;
+  top: 44%;
+  width: clamp(96px, 9.5vw, 150px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 22px rgba(24, 63, 64, .24));
+  opacity: .9;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.epilfast-christmas .christmas-santa--left {
+  left: max(-58px, calc((100vw - 1280px) / 2 - 112px));
+}
+
+.epilfast-christmas .christmas-santa--right {
+  right: max(-58px, calc((100vw - 1280px) / 2 - 112px));
+  top: 58%;
+  transform: translateY(-50%) scaleX(-1);
+}
+
 @keyframes christmas-banner-enter {
   from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes christmas-snow-fall {
+  0% { transform: translate3d(0, -6vh, 0) rotate(0deg); }
+  45% { transform: translate3d(var(--snow-drift-half, 8px), 48vh, 0) rotate(105deg); }
+  100% { transform: translate3d(var(--snow-drift, 16px), 108vh, 0) rotate(210deg); }
+}
+
+@media (max-width: 1360px) {
+  .epilfast-christmas .christmas-santa {
+    width: 82px;
+    opacity: .48;
+  }
+
+  .epilfast-christmas .christmas-santa--left { left: -48px; }
+  .epilfast-christmas .christmas-santa--right { right: -48px; }
 }
 
 @media (max-width: 720px) {
@@ -219,6 +293,28 @@ html.epilfast-christmas {
     grid-column: 3;
     grid-row: 1 / span 2;
   }
+
+  .epilfast-christmas .christmas-snow {
+    opacity: .5;
+  }
+
+  .epilfast-christmas .christmas-snow__flake:nth-child(2n) {
+    display: none;
+  }
+
+  .epilfast-christmas .christmas-santa {
+    width: 76px;
+    opacity: .7;
+  }
+
+  .epilfast-christmas .christmas-santa--left {
+    left: -24px;
+    top: 68%;
+  }
+
+  .epilfast-christmas .christmas-santa--right {
+    display: none;
+  }
 }
 
 @media (max-width: 420px) {
@@ -245,6 +341,14 @@ html.epilfast-christmas {
   .epilfast-christmas .christmas-banner__close {
     grid-column: 2;
   }
+
+  .epilfast-christmas .christmas-snow__flake:nth-child(4n + 3) {
+    display: none;
+  }
+
+  .epilfast-christmas .christmas-snow__flake {
+    animation-duration: calc(var(--snow-duration, 9s) + 5s);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -256,10 +360,15 @@ html.epilfast-christmas {
   .epilfast-christmas .christmas-banner__close {
     transition: none;
   }
+
+  .epilfast-christmas .christmas-snow {
+    display: none;
+  }
 }
 
 @media print {
-  .christmas-banner {
+  .christmas-banner,
+  .christmas-scene {
     display: none !important;
   }
 }

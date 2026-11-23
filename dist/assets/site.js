@@ -323,6 +323,57 @@ function setupPriceList() {
   render();
 }
 
+function renderBookingLoadingPage(popup, service) {
+  try {
+    const doc = popup.document;
+    doc.documentElement.lang = "it";
+    doc.title = "Prenotazione Epilfast su Bewelly";
+
+    const viewport = doc.createElement("meta");
+    viewport.name = "viewport";
+    viewport.content = "width=device-width,initial-scale=1";
+
+    const style = doc.createElement("style");
+    style.textContent = `
+      *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#f4f7f5;color:#244f50;font-family:Montserrat,Arial,sans-serif}
+      main{width:min(440px,100%);padding:36px 28px;border:1px solid #d6e0dc;border-radius:24px;background:#fff;box-shadow:0 18px 50px rgba(36,79,80,.14);text-align:center}
+      img{width:190px;max-width:70%;height:auto;margin:0 auto 28px}.loader{width:52px;height:52px;margin:0 auto 24px;border:5px solid #dfeae5;border-top-color:#427070;border-radius:50%;animation:spin .8s linear infinite}
+      h1{margin:0 0 10px;font-size:clamp(24px,6vw,34px);line-height:1.08}p{margin:0;color:#5f6b68;line-height:1.55}.service{margin-top:18px;padding:12px;border-radius:12px;background:#eef3f1;color:#244f50;font-weight:800}
+      @keyframes spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.loader{animation:none;border-top-color:#dfeae5;box-shadow:inset 0 0 0 8px #427070}}
+    `;
+    doc.head.replaceChildren(viewport, style);
+
+    const main = doc.createElement("main");
+    main.setAttribute("role", "status");
+    main.setAttribute("aria-live", "polite");
+
+    const logo = doc.createElement("img");
+    logo.src = new URL("assets/epilfast-logo.webp", location.href).href;
+    logo.alt = "Epilfast Beauty Caserta";
+    logo.width = 190;
+    logo.height = 74;
+
+    const loader = doc.createElement("div");
+    loader.className = "loader";
+    loader.setAttribute("aria-hidden", "true");
+
+    const title = doc.createElement("h1");
+    title.textContent = "Prepariamo il tuo carrello";
+
+    const copy = doc.createElement("p");
+    copy.textContent = "Stiamo aggiungendo il trattamento scelto. Tra pochi istanti sarai su Bewelly.";
+
+    const selected = doc.createElement("p");
+    selected.className = "service";
+    selected.textContent = service?.name || "Trattamento Epilfast";
+
+    main.append(logo, loader, title, copy, selected);
+    doc.body.replaceChildren(main);
+  } catch {
+    /* Il flusso di prenotazione continua anche se il browser limita il popup. */
+  }
+}
+
 function openBooking(service, trigger) {
   if (!service?.bewellyId) {
     window.open(BUSINESS.bookingUrl, "_blank", "noopener");
@@ -340,13 +391,10 @@ function openBooking(service, trigger) {
   if (trigger) {
     trigger.disabled = true;
     trigger.setAttribute("aria-busy", "true");
-    trigger.textContent = "Apro Bewelly…";
+    trigger.textContent = "Aggiungo al carrello…";
   }
 
-  try {
-    popup.document.title = "Prenotazione Epilfast su Bewelly";
-    popup.document.body.innerHTML = "<p style=\"font:600 16px system-ui;padding:32px;color:#244f50\">Sto aggiungendo il trattamento scelto al carrello Bewelly…</p>";
-  } catch {}
+  renderBookingLoadingPage(popup, service);
 
   const form = document.createElement("form");
   form.method = "POST";
@@ -369,15 +417,31 @@ function openBooking(service, trigger) {
   form.submit();
   form.remove();
 
+  /*
+   * Bewelly answers the cart POST with technical JSON. Keep that response in
+   * the background, then reuse the same first-party popup for the cart so its
+   * PHP session cookie and the selected service remain intact.
+   */
+  try {
+    popup.blur();
+    window.focus();
+  } catch {}
+
   window.setTimeout(() => {
-    try { popup.location.replace(BUSINESS.bookingCartUrl); }
-    catch { window.open(BUSINESS.bookingCartUrl, "_blank", "noopener"); }
+    if (!popup.closed) {
+      try {
+        popup.location = BUSINESS.bookingCartUrl;
+        popup.focus();
+      } catch {
+        window.open(BUSINESS.bookingCartUrl, popupName);
+      }
+    }
     if (trigger) {
       trigger.disabled = false;
       trigger.removeAttribute("aria-busy");
       trigger.textContent = originalLabel;
     }
-  }, 3000);
+  }, 1900);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -4,6 +4,9 @@
   const ROOT_CLASS = "epilfast-christmas";
   const CLOSED_CLASS = "epilfast-christmas-banner-closed";
   const BANNER_ID = "seasonal-christmas-banner";
+  const SCENE_ID = "seasonal-christmas-scene";
+  const SANTA_ASSET = "assets/santa-epilfast-v1.png";
+  const SNOWFLAKE_COUNT = 42;
   const START_AT = Date.parse("2026-11-23T00:00:00+01:00");
   const END_AT = Date.parse("2027-01-07T00:00:00+01:00");
   const MAX_TIMER_DELAY = 2147483647;
@@ -12,6 +15,7 @@
     document.documentElement.classList.remove(ROOT_CLASS);
     document.documentElement.classList.remove(CLOSED_CLASS);
     document.getElementById(BANNER_ID)?.remove();
+    document.getElementById(SCENE_ID)?.remove();
   };
 
   const isSeasonActive = (now = Date.now()) => now >= START_AT && now < END_AT;
@@ -80,6 +84,46 @@
     return banner;
   };
 
+  const createSeasonalScene = () => {
+    const scene = document.createElement("div");
+    scene.id = SCENE_ID;
+    scene.className = "christmas-scene";
+    scene.setAttribute("aria-hidden", "true");
+
+    const snow = document.createElement("div");
+    snow.className = "christmas-snow";
+
+    for (let index = 0; index < SNOWFLAKE_COUNT; index += 1) {
+      const flake = document.createElement("span");
+      const size = 4 + ((index * 7) % 8);
+      const drift = -24 + ((index * 17) % 49);
+      flake.className = "christmas-snow__flake";
+      flake.style.setProperty("--snow-left", `${(index * 37 + 11) % 101}%`);
+      flake.style.setProperty("--snow-size", `${size}px`);
+      flake.style.setProperty("--snow-opacity", String(.42 + ((index * 13) % 40) / 100));
+      flake.style.setProperty("--snow-duration", `${7 + ((index * 11) % 7)}s`);
+      flake.style.setProperty("--snow-delay", `${-((index * 19) % 12)}s`);
+      flake.style.setProperty("--snow-drift-half", `${Math.round(drift / 2)}px`);
+      flake.style.setProperty("--snow-drift", `${drift}px`);
+      snow.append(flake);
+    }
+
+    const createSanta = side => {
+      const santa = document.createElement("img");
+      santa.className = `christmas-santa christmas-santa--${side}`;
+      santa.src = SANTA_ASSET;
+      santa.alt = "";
+      santa.width = 300;
+      santa.height = 450;
+      santa.decoding = "async";
+      santa.draggable = false;
+      return santa;
+    };
+
+    scene.append(snow, createSanta("left"), createSanta("right"));
+    return scene;
+  };
+
   const activateSeason = () => {
     if (!isSeasonActive()) {
       removeSeasonalLayer();
@@ -97,6 +141,10 @@
       } else {
         document.body.prepend(banner);
       }
+    }
+
+    if (!document.getElementById(SCENE_ID)) {
+      document.body.append(createSeasonalScene());
     }
 
     scheduleExpiry();
