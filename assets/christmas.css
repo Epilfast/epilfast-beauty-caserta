@@ -1,0 +1,265 @@
+/*
+ * Epilfast seasonal layer — Natale 2026 / Epifania 2027.
+ * Every rule is scoped to the class set by christmas.js.
+ */
+
+html.epilfast-christmas {
+  --christmas-gold: #e8ce8b;
+  --christmas-gold-strong: #c79d46;
+  --christmas-cream: #fffaf0;
+  --christmas-pine: #183f40;
+  --christmas-banner-height: 64px;
+}
+
+.epilfast-christmas body {
+  padding-top: var(--christmas-banner-height);
+}
+
+.epilfast-christmas.epilfast-christmas-banner-closed body {
+  padding-top: 0;
+}
+
+.epilfast-christmas .site-header {
+  top: var(--christmas-banner-height);
+}
+
+.epilfast-christmas.epilfast-christmas-banner-closed .site-header {
+  top: 0;
+}
+
+.epilfast-christmas .filters {
+  top: calc(79px + var(--christmas-banner-height));
+}
+
+.epilfast-christmas.epilfast-christmas-banner-closed .filters {
+  top: 79px;
+}
+
+.epilfast-christmas .christmas-banner {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 240;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  border-bottom: 1px solid rgba(232, 206, 139, .55);
+  background:
+    radial-gradient(circle at 8% 25%, rgba(232, 206, 139, .15) 0 2px, transparent 3px),
+    radial-gradient(circle at 90% 75%, rgba(223, 234, 229, .13) 0 3px, transparent 4px),
+    linear-gradient(108deg, #183f40, #244f50 58%, #315f5c);
+  background-size: 86px 86px, 120px 120px, auto;
+  color: #fff;
+  box-shadow: 0 8px 26px rgba(24, 63, 64, .12);
+  animation: christmas-banner-enter .38s ease-out both;
+}
+
+.epilfast-christmas .christmas-banner::before,
+.epilfast-christmas .christmas-banner::after {
+  position: absolute;
+  z-index: -1;
+  color: var(--christmas-gold);
+  font-family: Georgia, serif;
+  line-height: 1;
+  opacity: .42;
+  pointer-events: none;
+}
+
+.epilfast-christmas .christmas-banner::before {
+  content: "\2726";
+  top: .55rem;
+  left: clamp(.7rem, 3vw, 3rem);
+  font-size: clamp(1rem, 2vw, 1.45rem);
+}
+
+.epilfast-christmas .christmas-banner::after {
+  content: "\00B7  \2726  \00B7";
+  right: clamp(4rem, 8vw, 8rem);
+  bottom: .35rem;
+  letter-spacing: .3rem;
+}
+
+.epilfast-christmas .christmas-banner__inner {
+  width: var(--container, min(1180px, calc(100% - 2rem)));
+  min-height: 64px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: clamp(.7rem, 2vw, 1.4rem);
+  padding-block: .55rem;
+}
+
+.epilfast-christmas .christmas-banner__mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(232, 206, 139, .72);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .07);
+  color: var(--christmas-gold);
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.epilfast-christmas .christmas-banner__message {
+  min-width: 0;
+  margin: 0;
+  color: #f5fbf8;
+  font-size: clamp(.82rem, 1.3vw, .96rem);
+  line-height: 1.35;
+}
+
+.epilfast-christmas .christmas-banner__message strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+.epilfast-christmas .christmas-banner__link {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem 1rem;
+  border: 1px solid var(--christmas-gold);
+  border-radius: 999px;
+  background: var(--christmas-gold);
+  color: #173b3c;
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.epilfast-christmas .christmas-banner__link:hover {
+  border-color: var(--christmas-cream);
+  background: var(--christmas-cream);
+  transform: translateY(-1px);
+}
+
+.epilfast-christmas .christmas-banner__close {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: background-color .18s ease, border-color .18s ease;
+}
+
+.epilfast-christmas .christmas-banner__close:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, .12);
+}
+
+.epilfast-christmas .christmas-banner__link:focus-visible,
+.epilfast-christmas .christmas-banner__close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Subtle, asset-free seasonal texture; content remains fully readable. */
+.epilfast-christmas .hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 22%, rgba(199, 157, 70, .3) 0 2px, transparent 3px),
+    radial-gradient(circle at 84% 16%, rgba(66, 112, 112, .24) 0 3px, transparent 4px),
+    radial-gradient(circle at 74% 78%, rgba(199, 157, 70, .2) 0 2px, transparent 3px);
+  background-size: 150px 150px, 210px 210px, 180px 180px;
+  opacity: .48;
+  pointer-events: none;
+}
+
+.epilfast-christmas .hero__grid {
+  z-index: 1;
+}
+
+@keyframes christmas-banner-enter {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+  html.epilfast-christmas {
+    --christmas-banner-height: 109px;
+  }
+
+  .epilfast-christmas .christmas-banner__inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: .65rem;
+    padding-block: .65rem;
+  }
+
+  .epilfast-christmas .christmas-banner__mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .epilfast-christmas .christmas-banner__link {
+    grid-column: 2;
+    width: fit-content;
+    margin-top: -.2rem;
+  }
+
+  .epilfast-christmas .christmas-banner__close {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+}
+
+@media (max-width: 420px) {
+  html.epilfast-christmas {
+    --christmas-banner-height: 109px;
+  }
+
+  .epilfast-christmas .christmas-banner__inner {
+    width: min(100% - 1rem, 1180px);
+  }
+
+  .epilfast-christmas .christmas-banner__mark {
+    display: none;
+  }
+
+  .epilfast-christmas .christmas-banner__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .epilfast-christmas .christmas-banner__link {
+    grid-column: 1;
+  }
+
+  .epilfast-christmas .christmas-banner__close {
+    grid-column: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .epilfast-christmas .christmas-banner {
+    animation: none;
+  }
+
+  .epilfast-christmas .christmas-banner__link,
+  .epilfast-christmas .christmas-banner__close {
+    transition: none;
+  }
+}
+
+@media print {
+  .christmas-banner {
+    display: none !important;
+  }
+}

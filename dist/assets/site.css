@@ -144,8 +144,11 @@ p { margin: 0 0 1rem; }
 .price-card { display: flex; min-height: 210px; flex-direction: column; justify-content: space-between; padding: 1.3rem; border: 1px solid var(--line); border-radius: 1.2rem; background: #fff; }
 .price-card__category { color: var(--petrol); font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .price-card h3 { margin: .5rem 0 .9rem; font-size: 1.12rem; }
-.price-card__bottom { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.price-card__duration { margin: -.35rem 0 .9rem; color: var(--muted); font-size: .88rem; font-weight: 700; }
+.price-card__bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: .75rem; }
 .price-card__price { color: var(--petrol-dark); font-size: 1.35rem; font-weight: 800; }
+.price-card__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .5rem; }
+.price-card__actions .btn { min-height: 42px; }
 .empty-state { grid-column: 1 / -1; padding: 3rem; border: 1px dashed var(--sage); border-radius: 1rem; text-align: center; color: var(--muted); }
 
 .promo-grid, .team-grid, .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
@@ -275,6 +278,9 @@ p { margin: 0 0 1rem; }
   .price-preview__row:nth-child(n) { padding-inline: .25rem; border-right: 0; }
   .filters { position: static; grid-template-columns: 1fr; }
   .filter-chips { order: 2; }
+  .price-card__bottom { align-items: stretch; flex-direction: column; }
+  .price-card__actions { width: 100%; justify-content: stretch; }
+  .price-card__actions .btn { flex: 1 1 120px; }
   .form-grid { grid-template-columns: 1fr; }
   .field--full, .consent { grid-column: auto; }
   .footer-grid { grid-template-columns: 1fr; }

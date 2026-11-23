@@ -3,24 +3,55 @@ const BUSINESS = {
   phone: "393519954908",
   address: "Via Ferrarecce 189, 81100 Caserta CE",
   bookingUrl: "https://www.bewelly.it/4290/",
+  bookingAddUrl: "https://www.bewelly.it/store_ajax.php",
+  bookingCartUrl: "https://www.bewelly.it/carrello/4290/",
+  bewellyDivisionId: "4290",
   instagram: "https://www.instagram.com/epilfastbeautycaserta/",
   whatsappIntro: "Ciao Epilfast Beauty, vorrei ricevere informazioni."
 };
 
 const SERVICES = [
-  ["Laser viso","Epilazione Intercigliare","9,90"],["Laser viso","Epilazione Naso","9,90"],["Laser viso","Epilazione Baffetto","9,90"],["Laser viso","Epilazione Basette","9,90"],["Laser viso","Epilazione Zigomi","9,90"],["Laser viso","Epilazione Orecchie","9,90"],["Laser viso","Epilazione Mento","9,90"],["Laser viso","Epilazione Sottomento","14,90"],["Laser viso","Epilazione Nuca","9,90"],["Laser viso","Epilazione Viso Completo","29,90"],
-  ["Laser corpo","Epilazione Spalle","19,90"],["Laser corpo","Epilazione 1/2 Braccia","29,90"],["Laser corpo","Epilazione Braccia Complete","39,90"],["Laser corpo","Epilazione Ascelle","19,90"],["Laser corpo","Epilazione Petto","29,90"],["Laser corpo","Epilazione Addome","29,90"],["Laser corpo","Epilazione Schiena Completa","39,90"],["Laser corpo","Epilazione Lombare","19,90"],["Laser corpo","Epilazione Mani","9,90"],["Laser corpo","Epilazione Gambe Complete","39,90"],["Laser corpo","Epilazione Glutei Completi","19,90"],["Laser corpo","Epilazione Inguine Totale","29,90"],["Laser corpo","Epilazione Intergluteo","9,90"],["Laser corpo","Epilazione Linea Alba","9,90"],["Laser corpo","Epilazione Pube","19,90"],["Laser corpo","Epilazione Piedi","9,90"],["Laser corpo","Epilazione 1/2 Gambe","29,90"],["Laser corpo","Epilazione 1/2 Gluteo","14,90"],
-  ["Pacchetti laser","Total Body · 90 minuti","99,90"],["Pacchetti laser","Viso Completo + Ascelle","34,90"],["Pacchetti laser","Petto + Addome","39,90"],["Pacchetti laser","Braccia Complete + Ascelle","44,90"],["Pacchetti laser","Gambe Complete + Ascelle","44,90"],["Pacchetti laser","Gambe Complete + Braccia Complete","64,90"],["Pacchetti laser","Gambe Complete + Glutei","39,90"],["Pacchetti laser","Gambe Complete + Inguine Completo","44,90"],["Pacchetti laser","Gambe Complete + Inguine Completo + Ascelle","54,90"],["Pacchetti laser","Gambe Complete + Viso Completo","49,90"],["Pacchetti laser","Inguine Completo + Ascelle","34,90"],["Pacchetti laser","Inguine Completo + Linea Alba","34,90"],["Pacchetti laser","Inguine Completo + Viso Completo","34,90"],
-  ["Viso","Scrub Viso · 30 minuti","19,90"],["Viso","Radiofrequenza Viso · 30 minuti","29,90"],["Viso","Exentia Viso · 30 minuti","39,90"],["Viso","Formula 301 Antiage · 50 minuti","49,90"],["Viso","Formula 301 Acne e Pelli Impure · 50 minuti","49,90"],["Viso","Hisiris Prodermis Pelli Sensibili · 50 minuti","49,90"],["Viso","Hisiris Prorose Pelli Impure · 50 minuti","49,90"],["Viso","Pulizia del Viso Generale · 50 minuti","29,90"],["Viso","Pulizia Viso con Ultrasuoni · 50 minuti","34,90"],
-  ["Corpo","Massaggio Decontratturante Schiena · 30 minuti","24,90"],["Corpo","Massaggio Drenante · 30 minuti","24,90"],["Corpo","Massaggio Decontratturante Schiena · 50 minuti","39,90"],["Corpo","Massaggio Drenante · 45 minuti","39,90"],["Corpo","Massaggio Benessere · 50 minuti","39,90"],["Corpo","Massaggio Bamboo · 50 minuti","39,90"],["Corpo","Pressoterapia con Bendaggio · 45 minuti","34,90"],["Corpo","Pressoterapia con Infrarossi · 30 minuti","9,90"],["Corpo","Scrub Corpo · 30 minuti","19,90"],["Corpo","C30 Trattamento anticellulite · 30 minuti","34,90"],["Corpo","Bendaggi Gambe · 40 minuti","34,90"],["Corpo","Trattamento Drenante Drain 02 · 45 minuti","39,90"],["Corpo","Bendaggi Corpo · 50 minuti","49,90"],["Corpo","Radiofrequenza Corpo · 60 minuti","54,90"],["Corpo","Exentia Corpo · 60 minuti","59,90"],["Corpo","Criolipolisi · 75 minuti","149,90"],
-  ["Cerette","Ceretta Braccia Parziale · Donna","9,90"],["Cerette","Ceretta Inguine Parziale · Donna","7,00"],["Cerette","Ceretta Inguine Totale · Donna","9,00"],["Cerette","Ceretta Schiena · Donna","14,90"],["Cerette","Ceretta Braccia Complete · Donna","12,00"],["Cerette","Ceretta Gamba Intera · Donna","14,90"],["Cerette","Mezza Gamba + Inguine · Donna","19,90"],["Cerette","Gambe + Inguine + Ascelle · Donna","34,90"],["Cerette","Gamba Intera + Inguine Parziale · Donna","24,90"],["Cerette","Ceretta Sopracciglia · Donna","3,00"],["Cerette","Ceretta Ascelle · Donna","6,00"],["Cerette","Ceretta Labbro Superiore · Donna","3,00"],["Cerette","Gamba Intera + Inguine Totale · Donna","29,90"]
-].map(([category,name,price], index) => ({ id: index + 1, category, name, price: `€ ${price}` }));
+  { category: "Corpo", name: "Bendaggi Corpo", price: "da 49,90 €", duration: "50 min", bewellyId: 541121 },
+  { category: "Corpo", name: "Bendaggi Gambe", price: "da 34,90 €", duration: "40 min", bewellyId: 541120 },
+  { category: "Corpo", name: "Bendaggi drenanti", price: "da 39,90 €", duration: "30 min", bewellyId: 783904 },
+  { category: "Corpo", name: "Body Wrap Termo", price: "da 49,90 €", duration: "30 min", bewellyId: 677586 },
+  { category: "Corpo", name: "Bodyslimming massage - 30 min massaggio + fasi prodotti", price: "da 60,00 €", duration: "45 min", bewellyId: 686477 },
+  { category: "Corpo", name: "Bodyslimming Fast 30 min", price: "da 45,00 €", duration: "30 min", bewellyId: 648359 },
+  { category: "Corpo", name: "Bodyslimming Massaggio Parziale", price: "da 49,90 €", duration: "45 min", bewellyId: 648362 },
+  { category: "Corpo", name: "Bodyslimming Prima Seduta", price: "da 39,90 €", duration: "30 min", bewellyId: 648363 },
+  { category: "Corpo", name: "Bodyslimming Total", price: "da 80,00 €", duration: "1 h 15 min", bewellyId: 648361 },
+  { category: "Corpo", name: "C30 - Trattamento anticellulite", price: "da 34,90 €", duration: "30 min", bewellyId: 541123 },
+  { category: "Depilazione", name: "Ceretta Ascelle - Donna", price: "da 7,00 €", duration: "5 min", bewellyId: 540867 },
+  { category: "Depilazione", name: "Ceretta Braccia Parziale - Donna", price: "da 9,90 €", duration: "10 min", bewellyId: 540852 },
+  { category: "Depilazione", name: "Ceretta Gamba Intera", price: "da 19,90 €", duration: "30 min", bewellyId: 540855 },
+  { category: "Depilazione", name: "Ceretta Gamba Intera - Donna", price: "da 19,90 €", duration: "30 min", bewellyId: 540853 },
+  { category: "Depilazione", name: "Ceretta Gamba Intera e Inguine Parziale - Donna", price: "da 24,90 €", duration: "30 min", bewellyId: 540856 },
+  { category: "Depilazione", name: "Ceretta Gambe Inguine e Ascelle - Donna", price: "da 34,90 €", duration: "35 min", bewellyId: 540871 },
+  { category: "Depilazione", name: "Ceretta Labbro Superiore baffetto - Donna", price: "da 5,00 €", duration: "5 min", bewellyId: 540873 },
+  { category: "Depilazione", name: "Ceretta Mezza Gamba + Inguine - Donna", price: "da 19,90 €", duration: "30 min", bewellyId: 540864 },
+  { category: "Depilazione", name: "Ceretta Schiena Donna", price: "da 19,90 €", duration: "20 min", bewellyId: 540876 },
+  { category: "Depilazione", name: "Ceretta sopracciglia - Donna", price: "da 5,00 €", duration: "5 min", bewellyId: 540848 },
+  { category: "Viso", name: "Colorazione Sopracciglia Hennè - Donna", price: "da 14,90 €", duration: "30 min", bewellyId: 540840 },
+  { category: "Viso", name: "Formula 301 Acne e Pelli Impure", price: "da 49,90 €", duration: "50 min", bewellyId: 541108 },
+  { category: "Viso", name: "Formula 301 Antiage", price: "da 49,90 €", duration: "50 min", bewellyId: 540851 },
+  { category: "Viso", name: "Hisiris Prodermis Viso Pelli Sensibili Couperose", price: "da 49,90 €", duration: "50 min", bewellyId: 541114 },
+  { category: "Viso", name: "Hisiris Prorose Pelli Impure Acne", price: "da 49,90 €", duration: "50 min", bewellyId: 541115 },
+  { category: "Viso", name: "Pulizia viso con ultrasuoni", price: "da 34,90 €", duration: "50 min", bewellyId: 541117 },
+  { category: "Viso", name: "Pulizia viso generale", price: "da 29,90 €", duration: "50 min", bewellyId: 541116 },
+  { category: "Viso", name: "Radiofrequenza viso", price: "da 29,90 €", duration: "45 min", bewellyId: 541119 },
+  { category: "Viso", name: "Trattamento Viso Vitamina C", price: "da 49,90 €", duration: "50 min", bewellyId: 652358 },
+  { category: "T.Modella", name: "Exentia Viso", price: "da 39,90 €", duration: "30 min", bewellyId: 597987 },
+  { category: "Combo", name: "Percorso Anticellulite 80 Minuti", price: "da 49,80 €", duration: "", bewellyId: 798106 },
+  { category: "Combo", name: "laser topper body", price: "da 124,70 €", duration: "", bewellyId: 786888 },
+  { category: "Massaggio", name: "Pressoterapia Con Bendaggio", price: "da 34,90 €", duration: "45 min", bewellyId: 541128 },
+  { category: "Massaggio", name: "Pressoterapia Infrarossi", price: "da 9,90 €", duration: "30 min", bewellyId: 541107 },
+  { category: "Massaggio", name: "Pressoterapia vacum", price: "da 0,00 €", duration: "30 min", bewellyId: 787522 }
+];
 
 const navItems = [
   ["index.html","Home"],["chi-siamo.html","Chi siamo"],["listino.html","Listino"],["contatti.html","Contatti"],["legal.html","Privacy"]
 ];
 
-let lastFocusedBeforeDialog = null;
 const CONSENT_KEY = "epilfast_consent_v1";
 const CONSENT_MAX_AGE = 180 * 24 * 60 * 60 * 1000;
 
@@ -54,7 +85,7 @@ function headerTemplate() {
     <div class="site-header"><nav class="nav" aria-label="Navigazione principale">
       <a class="brand" href="index.html" aria-label="Epilfast Beauty, home"><img src="assets/epilfast-logo.webp" width="190" height="74" alt="Epilfast Beauty Caserta"></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Apri il menu">Menu</button>
-      <div class="nav__links" id="nav-links">${links}<a class="btn btn--small" href="${BUSINESS.bookingUrl}" target="_blank" rel="noopener">Prenota online</a></div>
+      <div class="nav__links" id="nav-links">${links}<a class="btn btn--small" href="listino.html">Scegli e prenota</a></div>
     </nav></div>`;
 }
 
@@ -262,10 +293,10 @@ function setupPriceList() {
   function render() {
     const term = search.value.trim().toLocaleLowerCase("it");
     const filtered = SERVICES.filter(item => (active === "Tutti" || item.category === active) && (!term || `${item.name} ${item.category}`.toLocaleLowerCase("it").includes(term)));
-    meta.textContent = `${filtered.length} trattament${filtered.length === 1 ? "o" : "i"} visibili`;
+    meta.textContent = `${filtered.length} trattament${filtered.length === 1 ? "o visibile" : "i visibili"}`;
     grid.innerHTML = filtered.length ? filtered.map(item => `<article class="price-card">
-      <div><div class="price-card__category">${item.category}</div><h3>${item.name}</h3></div>
-      <div class="price-card__bottom"><span class="price-card__price">${item.price}</span><button class="btn btn--outline btn--small" type="button" data-book="${item.id}">Richiedi</button></div>
+      <div><div class="price-card__category">${item.category}</div><h3>${item.name}</h3>${item.duration ? `<p class="price-card__duration">Durata: ${item.duration}</p>` : ""}</div>
+      <div class="price-card__bottom"><span class="price-card__price">${item.price}</span><div class="price-card__actions"><button class="btn btn--outline btn--small" type="button" data-whatsapp-service="${item.bewellyId}" aria-label="Chiedi informazioni su ${item.name} via WhatsApp">WhatsApp</button><button class="btn btn--small" type="button" data-book="${item.bewellyId}" aria-label="Prenota ${item.name} su Bewelly">Prenota</button></div></div>
     </article>`).join("") : `<div class="empty-state"><h3>Nessun trattamento trovato</h3><p>Prova un'altra parola o torna a tutte le categorie.</p></div>`;
   }
   search.addEventListener("input", render);
@@ -275,129 +306,87 @@ function setupPriceList() {
     render();
   }));
   grid.addEventListener("click", event => {
-    const button = event.target.closest("[data-book]");
-    if (!button) return;
-    const service = SERVICES.find(item => item.id === Number(button.dataset.book));
-    openBooking(service?.name || "Trattamento", button);
+    const bookingButton = event.target.closest("[data-book]");
+    if (bookingButton) {
+      const service = SERVICES.find(item => item.bewellyId === Number(bookingButton.dataset.book));
+      openBooking(service, bookingButton);
+      return;
+    }
+    const whatsappButton = event.target.closest("[data-whatsapp-service]");
+    if (!whatsappButton) return;
+    const service = SERVICES.find(item => item.bewellyId === Number(whatsappButton.dataset.whatsappService));
+    if (!service) return;
+    const details = [service.price, service.duration].filter(Boolean).join(" · ");
+    const text = `Ciao Epilfast Beauty, vorrei informazioni sul trattamento “${service.name}” (${details}).`;
+    window.open(whatsappUrl(text), "_blank", "noopener");
   });
   render();
 }
 
-function setDialogBackgroundInert(inert) {
-  [document.querySelector("#site-header"), document.querySelector("#main"), document.querySelector(".site-footer"), document.querySelector(".whatsapp-signature"), document.querySelector(".consent-banner")]
-    .forEach(element => setElementInert(element, inert));
-}
+function openBooking(service, trigger) {
+  if (!service?.bewellyId) {
+    window.open(BUSINESS.bookingUrl, "_blank", "noopener");
+    return;
+  }
 
-function openBooking(service = "Trattamento da scegliere", trigger = document.activeElement) {
-  const modal = document.querySelector("#booking-modal");
-  if (!modal) return;
-  lastFocusedBeforeDialog = trigger instanceof HTMLElement ? trigger : document.activeElement;
-  setDialogBackgroundInert(true);
-  modal.setAttribute("open", "");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  const select = modal.querySelector("#booking-service");
-  select.innerHTML = SERVICES.map(item => `<option value="${item.name}" ${item.name === service ? "selected" : ""}>${item.name}</option>`).join("");
-  modal.querySelector("input").focus();
-}
+  const popupName = "epilfast-bewelly-booking";
+  const popup = window.open("about:blank", popupName);
+  if (!popup) {
+    window.open(BUSINESS.bookingUrl, "_blank", "noopener");
+    return;
+  }
 
-function closeBooking() {
-  const modal = document.querySelector("#booking-modal");
-  if (!modal) return;
-  setDialogBackgroundInert(false);
-  if (lastFocusedBeforeDialog?.isConnected) lastFocusedBeforeDialog.focus();
-  lastFocusedBeforeDialog = null;
-  modal.removeAttribute("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+  const originalLabel = trigger?.textContent;
+  if (trigger) {
+    trigger.disabled = true;
+    trigger.setAttribute("aria-busy", "true");
+    trigger.textContent = "Apro Bewelly…";
+  }
+
+  try {
+    popup.document.title = "Prenotazione Epilfast su Bewelly";
+    popup.document.body.innerHTML = "<p style=\"font:600 16px system-ui;padding:32px;color:#244f50\">Sto aggiungendo il trattamento scelto al carrello Bewelly…</p>";
+  } catch {}
+
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = BUSINESS.bookingAddUrl;
+  form.target = popupName;
+  form.hidden = true;
+  const values = {
+    service_id: String(service.bewellyId),
+    action: "add_service",
+    division_id: BUSINESS.bewellyDivisionId
+  };
+  Object.entries(values).forEach(([name, value]) => {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    input.value = value;
+    form.append(input);
+  });
+  document.body.append(form);
+  form.submit();
+  form.remove();
+
+  window.setTimeout(() => {
+    try { popup.location.replace(BUSINESS.bookingCartUrl); }
+    catch { window.open(BUSINESS.bookingCartUrl, "_blank", "noopener"); }
+    if (trigger) {
+      trigger.disabled = false;
+      trigger.removeAttribute("aria-busy");
+      trigger.textContent = originalLabel;
+    }
+  }, 3000);
 }
 
 function setupBooking() {
-  const modal = document.querySelector("#booking-modal");
-  if (!modal) return;
-  document.querySelectorAll("[data-open-booking]").forEach(button => button.addEventListener("click", () => openBooking(button.dataset.service || undefined, button)));
-  modal.querySelector("[data-close]").addEventListener("click", closeBooking);
-  modal.addEventListener("click", event => { if (event.target === modal) closeBooking(); });
-  document.addEventListener("keydown", event => {
-    if (!modal.hasAttribute("open")) return;
-    if (event.key === "Escape") {
-      event.preventDefault();
-      closeBooking();
-      return;
-    }
-    if (event.key !== "Tab") return;
-    const focusable = visibleFocusable(modal);
-    if (!focusable.length) return;
-    const first = focusable[0];
-    const last = focusable.at(-1);
-    if (!modal.contains(document.activeElement)) {
-      event.preventDefault();
-      first.focus();
-    } else if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  });
-  const form = modal.querySelector("form");
-  const clearInvalid = field => {
-    if (!field) return;
-    const valid = field.type === "checkbox" ? field.checked : Boolean(String(field.value || "").trim());
-    if (valid) {
-      field.removeAttribute("aria-invalid");
-      field.removeAttribute("aria-describedby");
-    }
-  };
-  form.addEventListener("input", event => clearInvalid(event.target));
-  form.addEventListener("change", event => clearInvalid(event.target));
-  form.addEventListener("submit", event => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const required = ["name","phone","service","date"];
-    const fields = required.map(key => event.currentTarget.elements.namedItem(key));
-    fields.push(event.currentTarget.elements.namedItem("consent"));
-    const invalidFields = fields.filter(field => field && (field.type === "checkbox" ? !field.checked : !String(field.value || "").trim()));
-    const message = modal.querySelector(".form-message");
-    fields.forEach(field => {
-      const invalid = invalidFields.includes(field);
-      if (invalid) {
-        field.setAttribute("aria-invalid", "true");
-        field.setAttribute("aria-describedby", "booking-errors");
-      } else {
-        field.removeAttribute("aria-invalid");
-        field.removeAttribute("aria-describedby");
-      }
-    });
-    if (invalidFields.length) {
-      message.textContent = "Completa i campi obbligatori e accetta il contatto su WhatsApp.";
-      invalidFields[0].focus();
-      return;
-    }
-    const text = `Ciao Epilfast Beauty, vorrei richiedere un appuntamento.\n\nNome: ${data.get("name")}\nTelefono: ${data.get("phone")}\nTrattamento: ${data.get("service")}\nData/fascia preferita: ${data.get("date")}\nNote: ${data.get("notes") || "Nessuna"}\n\nAttendo conferma dal centro.`;
-    window.open(whatsappUrl(text), "_blank", "noopener");
-    message.textContent = "Si è aperta la richiesta WhatsApp. L'appuntamento sarà valido solo dopo conferma del centro.";
-    message.style.color = "#245b43";
-  });
+  document.querySelectorAll("[data-open-booking]").forEach(button => button.addEventListener("click", () => openBooking()));
 }
 
 function bookingModalTemplate() {
   const target = document.querySelector("#booking-modal");
-  if (!target) return;
-  target.innerHTML = `<div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="booking-title">
-    <div class="modal__head"><div><p class="eyebrow">Richiesta appuntamento</p><h2 id="booking-title">Scegli quando sentirci</h2></div><button class="modal__close" type="button" data-close aria-label="Chiudi">×</button></div>
-    <p class="muted">La richiesta apre WhatsApp. La data è confermata soltanto dopo la risposta del centro.</p>
-    <form class="form-grid" novalidate>
-      <div class="field"><label for="booking-name">Nome e cognome *</label><input id="booking-name" name="name" autocomplete="name" required></div>
-      <div class="field"><label for="booking-phone">Telefono *</label><input id="booking-phone" name="phone" inputmode="tel" autocomplete="tel" required></div>
-      <div class="field field--full"><label for="booking-service">Trattamento *</label><select id="booking-service" name="service" required></select></div>
-      <div class="field field--full"><label for="booking-date">Data o fascia preferita *</label><input id="booking-date" name="date" placeholder="Es. martedì mattina oppure giovedì dopo le 16" required></div>
-      <div class="field field--full"><label for="booking-notes">Note</label><textarea id="booking-notes" name="notes" placeholder="Aggiungi una seconda preferenza o una domanda"></textarea></div>
-      <label class="consent" for="booking-consent"><input id="booking-consent" type="checkbox" name="consent" value="yes" required><span>Autorizzo l'apertura di WhatsApp con i dati inseriti per essere ricontattato/a dal centro.</span></label>
-      <div class="field--full"><button class="btn" type="submit">Prepara richiesta WhatsApp</button><p id="booking-errors" class="form-message" aria-live="polite"></p></div>
-    </form>
-  </div>`;
+  target?.remove();
 }
 
 document.addEventListener("DOMContentLoaded", () => {

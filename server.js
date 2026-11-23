@@ -6,7 +6,7 @@ const path = require("node:path");
 
 const ROOT = __dirname;
 const PORT = Number(process.env.PORT) || 3000;
-const VERSION = "1.0.3";
+const VERSION = "1.1.0";
 
 const routes = new Map([
   ["/", "index.html"], ["/index.html", "index.html"],
@@ -27,10 +27,10 @@ const mimeTypes = new Map([
 function commonHeaders(contentType) {
   return {
     "Content-Type": contentType,
-    "Content-Security-Policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; upgrade-insecure-requests",
+    "Content-Security-Policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://www.bewelly.it; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; upgrade-insecure-requests",
     "Referrer-Policy": "strict-origin-when-cross-origin", "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY", "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
-    "Cross-Origin-Opener-Policy": "same-origin", "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    "Cross-Origin-Opener-Policy": "same-origin-allow-popups", "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
   };
 }
 
