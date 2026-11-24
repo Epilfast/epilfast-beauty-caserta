@@ -31,8 +31,14 @@ await cp(join(root, "legal.html"), join(dist, "privacy-policy.html"));
 await cp(join(root, "legal.html"), join(dist, "cookie-policy.html"));
 await cp(join(root, "assets"), join(dist, "assets"), { recursive: true });
 
-const hosting = await readFile(join(root, ".openai", "hosting.json"), "utf8");
-await mkdir(join(dist, ".openai"), { recursive: true });
-await writeFile(join(dist, ".openai", "hosting.json"), hosting, "utf8");
+try {
+  const hosting = await readFile(join(root, ".openai", "hosting.json"), "utf8");
+  await mkdir(join(dist, ".openai"), { recursive: true });
+  await writeFile(join(dist, ".openai", "hosting.json"), hosting, "utf8");
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+  // GoDaddy Airo non usa il manifest Sites: il pacchetto resta compilabile
+  // anche quando quella configurazione non fa parte dell'archivio sorgente.
+}
 
 console.log(`Built ${dist}`);
