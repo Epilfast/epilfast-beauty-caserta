@@ -44,9 +44,8 @@ function serveFile(res, filePath, method) {
   fs.readFile(filePath, (error, body) => {
     if (error) return send(res, 404, "Risorsa non trovata", "text/plain; charset=utf-8", method, { "Cache-Control": "no-store" });
     const extension = path.extname(filePath).toLowerCase();
-    const immutableAsset = filePath.startsWith(path.join(ROOT, "assets") + path.sep);
     send(res, 200, body, mimeTypes.get(extension) || "application/octet-stream", method, {
-      "Cache-Control": immutableAsset ? "public, max-age=604800" : "public, max-age=300"
+      "Cache-Control": "public, max-age=0, must-revalidate"
     });
   });
 }

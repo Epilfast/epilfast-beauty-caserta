@@ -18,7 +18,7 @@ Quindi visitare `http://127.0.0.1:4175`.
 
 - Home con nuova direzione visiva coerente con logo e palette Epilfast.
 - Chi siamo/staff predisposto senza inventare identità.
-- Listino con 35 trattamenti e pacchetti pubblicati da Bewelly il 23 novembre 2026, ricerca e filtri per categoria.
+- Listino con tutti i 116 trattamenti e pacchetti pubblicati da Bewelly il 24 novembre 2026, comprese le voci dietro “Mostra tutti”, con ricerca e filtri per categoria.
 - Due azioni per ogni trattamento: richiesta WhatsApp precompilata oppure prenotazione con servizio preselezionato nel carrello Bewelly ufficiale.
 - Pagina pacchetti allineata alle voci Combo realmente presenti su Bewelly, senza riattivare offerte scadute.
 - VIP Card concettuale, separata da credito, punti e gift card.
@@ -29,7 +29,7 @@ Quindi visitare `http://127.0.0.1:4175`.
 
 ## Fonti
 
-Trattamenti, prezzi, durate e identificativi di prenotazione derivano dal catalogo pubblico Bewelly del centro (`division_id` 4290), consultato il 23 novembre 2026. La direzione progettuale riprende la completezza funzionale raggiunta nel progetto Raffaella Cerasuolo senza copiarne brand, colori o contenuti.
+Trattamenti, prezzi, durate e identificativi di prenotazione derivano dal catalogo pubblico Bewelly del centro (`division_id` 4290), consultato il 24 novembre 2026. L'importatore include anche le schede inizialmente compresse da Bewelly e verifica conteggio minimo, categorie estese e unicità degli identificativi. La direzione progettuale riprende la completezza funzionale raggiunta nel progetto Raffaella Cerasuolo senza copiarne brand, colori o contenuti.
 
 - Associazione cliente/titolare: comunicazione diretta dell'utente del 23 novembre 2026.
 - Fonte per P. IVA e dati fiscali: record CRM autorizzato indicato dall'utente il 23 novembre 2026; conferma amministrativa finale ancora prudente.
@@ -50,10 +50,10 @@ Resta prudente una revisione periodica del titolare/professionista privacy e l'a
 - Nessun pagamento o ordine reale.
 - Nessun dato staff inventato.
 - Il widget WhatsApp si sposta quando CTA, footer o un eventuale banner cookie entrano nella sua area, ha target mobile `56 × 56 CSS px`, nome accessibile ed è nascosto in stampa.
-- Il catalogo è una fotografia verificata il 23 novembre 2026: se Bewelly cambia prezzi o servizi, occorre riallineare il sito finché non viene concessa un'API ufficiale documentata.
+- Il catalogo è una fotografia verificata il 24 novembre 2026. Per riallinearlo eseguire `npm run sync:bewelly`, poi `npm run check` e `npm run build`; la pubblicazione resta un passaggio separato.
 - Il livello natalizio è attivo dal 23 novembre 2026 fino al 6 gennaio 2027 incluso e viene rimosso automaticamente dal 7 gennaio 2027, senza cookie o storage aggiuntivo.
 - I dati fiscali presenti derivano dal record CRM autorizzato; resta opportuna la conferma amministrativa finale del titolare. Policy e inventario vanno riesaminati se cambia l'assetto tecnico.
 
 ## Prenotazione Bewelly
 
-Il pulsante “Prenota” apre una finestra di prima parte, invia a Bewelly soltanto `service_id`, `action=add_service` e `division_id=4290`, quindi apre il carrello ufficiale. Nome, recapiti, disponibilità e conferma vengono gestiti direttamente su Bewelly. La CSP autorizza esclusivamente il form verso `https://www.bewelly.it` e non abilita script o iframe Bewelly nel sito.
+Il pulsante “Prenota” apre un ponte di caricamento Epilfast, invia a Bewelly soltanto `service_id`, `action=add_service` e `division_id=4290` in una scheda rimasta in secondo piano, quindi apre il carrello ufficiale nella scheda visibile. La pagina Epilfast originale viene ripristinata automaticamente: la risposta tecnica JSON di Bewelly non viene più mostrata al visitatore. Nome, recapiti, disponibilità e conferma vengono gestiti direttamente su Bewelly. La CSP autorizza esclusivamente il form verso `https://www.bewelly.it` e non abilita script o iframe Bewelly nel sito.

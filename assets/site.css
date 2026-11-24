@@ -145,6 +145,7 @@ p { margin: 0 0 1rem; }
 .price-card__category { color: var(--petrol); font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .price-card h3 { margin: .5rem 0 .9rem; font-size: 1.12rem; }
 .price-card__duration { margin: -.35rem 0 .9rem; color: var(--muted); font-size: .88rem; font-weight: 700; }
+.price-card__description { margin: -.25rem 0 1rem; color: var(--muted); font-size: .88rem; line-height: 1.55; }
 .price-card__bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: .75rem; }
 .price-card__price { color: var(--petrol-dark); font-size: 1.35rem; font-weight: 800; }
 .price-card__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .5rem; }

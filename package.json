@@ -10,6 +10,7 @@
   "scripts": {
     "build": "node scripts/build-static.mjs",
     "start": "node server.js",
-    "check": "node --check server.js && node --check assets/site.js && node --check assets/christmas.js"
+    "sync:bewelly": "node scripts/sync-bewelly-catalog.mjs",
+    "check": "node --check server.js && node --check assets/services.js && node --check assets/site.js && node --check assets/christmas.js && node scripts/verify-static.mjs"
   }
 }

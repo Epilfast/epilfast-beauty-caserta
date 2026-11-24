@@ -10,43 +10,7 @@ const BUSINESS = {
   whatsappIntro: "Ciao Epilfast Beauty, vorrei ricevere informazioni."
 };
 
-const SERVICES = [
-  { category: "Corpo", name: "Bendaggi Corpo", price: "da 49,90 €", duration: "50 min", bewellyId: 541121 },
-  { category: "Corpo", name: "Bendaggi Gambe", price: "da 34,90 €", duration: "40 min", bewellyId: 541120 },
-  { category: "Corpo", name: "Bendaggi drenanti", price: "da 39,90 €", duration: "30 min", bewellyId: 783904 },
-  { category: "Corpo", name: "Body Wrap Termo", price: "da 49,90 €", duration: "30 min", bewellyId: 677586 },
-  { category: "Corpo", name: "Bodyslimming massage - 30 min massaggio + fasi prodotti", price: "da 60,00 €", duration: "45 min", bewellyId: 686477 },
-  { category: "Corpo", name: "Bodyslimming Fast 30 min", price: "da 45,00 €", duration: "30 min", bewellyId: 648359 },
-  { category: "Corpo", name: "Bodyslimming Massaggio Parziale", price: "da 49,90 €", duration: "45 min", bewellyId: 648362 },
-  { category: "Corpo", name: "Bodyslimming Prima Seduta", price: "da 39,90 €", duration: "30 min", bewellyId: 648363 },
-  { category: "Corpo", name: "Bodyslimming Total", price: "da 80,00 €", duration: "1 h 15 min", bewellyId: 648361 },
-  { category: "Corpo", name: "C30 - Trattamento anticellulite", price: "da 34,90 €", duration: "30 min", bewellyId: 541123 },
-  { category: "Depilazione", name: "Ceretta Ascelle - Donna", price: "da 7,00 €", duration: "5 min", bewellyId: 540867 },
-  { category: "Depilazione", name: "Ceretta Braccia Parziale - Donna", price: "da 9,90 €", duration: "10 min", bewellyId: 540852 },
-  { category: "Depilazione", name: "Ceretta Gamba Intera", price: "da 19,90 €", duration: "30 min", bewellyId: 540855 },
-  { category: "Depilazione", name: "Ceretta Gamba Intera - Donna", price: "da 19,90 €", duration: "30 min", bewellyId: 540853 },
-  { category: "Depilazione", name: "Ceretta Gamba Intera e Inguine Parziale - Donna", price: "da 24,90 €", duration: "30 min", bewellyId: 540856 },
-  { category: "Depilazione", name: "Ceretta Gambe Inguine e Ascelle - Donna", price: "da 34,90 €", duration: "35 min", bewellyId: 540871 },
-  { category: "Depilazione", name: "Ceretta Labbro Superiore baffetto - Donna", price: "da 5,00 €", duration: "5 min", bewellyId: 540873 },
-  { category: "Depilazione", name: "Ceretta Mezza Gamba + Inguine - Donna", price: "da 19,90 €", duration: "30 min", bewellyId: 540864 },
-  { category: "Depilazione", name: "Ceretta Schiena Donna", price: "da 19,90 €", duration: "20 min", bewellyId: 540876 },
-  { category: "Depilazione", name: "Ceretta sopracciglia - Donna", price: "da 5,00 €", duration: "5 min", bewellyId: 540848 },
-  { category: "Viso", name: "Colorazione Sopracciglia Hennè - Donna", price: "da 14,90 €", duration: "30 min", bewellyId: 540840 },
-  { category: "Viso", name: "Formula 301 Acne e Pelli Impure", price: "da 49,90 €", duration: "50 min", bewellyId: 541108 },
-  { category: "Viso", name: "Formula 301 Antiage", price: "da 49,90 €", duration: "50 min", bewellyId: 540851 },
-  { category: "Viso", name: "Hisiris Prodermis Viso Pelli Sensibili Couperose", price: "da 49,90 €", duration: "50 min", bewellyId: 541114 },
-  { category: "Viso", name: "Hisiris Prorose Pelli Impure Acne", price: "da 49,90 €", duration: "50 min", bewellyId: 541115 },
-  { category: "Viso", name: "Pulizia viso con ultrasuoni", price: "da 34,90 €", duration: "50 min", bewellyId: 541117 },
-  { category: "Viso", name: "Pulizia viso generale", price: "da 29,90 €", duration: "50 min", bewellyId: 541116 },
-  { category: "Viso", name: "Radiofrequenza viso", price: "da 29,90 €", duration: "45 min", bewellyId: 541119 },
-  { category: "Viso", name: "Trattamento Viso Vitamina C", price: "da 49,90 €", duration: "50 min", bewellyId: 652358 },
-  { category: "T.Modella", name: "Exentia Viso", price: "da 39,90 €", duration: "30 min", bewellyId: 597987 },
-  { category: "Combo", name: "Percorso Anticellulite 80 Minuti", price: "da 49,80 €", duration: "", bewellyId: 798106 },
-  { category: "Combo", name: "laser topper body", price: "da 124,70 €", duration: "", bewellyId: 786888 },
-  { category: "Massaggio", name: "Pressoterapia Con Bendaggio", price: "da 34,90 €", duration: "45 min", bewellyId: 541128 },
-  { category: "Massaggio", name: "Pressoterapia Infrarossi", price: "da 9,90 €", duration: "30 min", bewellyId: 541107 },
-  { category: "Massaggio", name: "Pressoterapia vacum", price: "da 0,00 €", duration: "30 min", bewellyId: 787522 }
-];
+const SERVICES = globalThis.EPILFAST_SERVICES || [];
 
 const navItems = [
   ["index.html","Home"],["chi-siamo.html","Chi siamo"],["listino.html","Listino"],["contatti.html","Contatti"],["legal.html","Privacy"]
@@ -144,6 +108,16 @@ function injectChrome() {
 
 function whatsappUrl(message) {
   return `https://wa.me/${BUSINESS.phone}?text=${encodeURIComponent(message)}`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
 }
 
 function injectWhatsAppSignature() {
@@ -292,11 +266,11 @@ function setupPriceList() {
 
   function render() {
     const term = search.value.trim().toLocaleLowerCase("it");
-    const filtered = SERVICES.filter(item => (active === "Tutti" || item.category === active) && (!term || `${item.name} ${item.category}`.toLocaleLowerCase("it").includes(term)));
+    const filtered = SERVICES.filter(item => (active === "Tutti" || item.category === active) && (!term || `${item.name} ${item.category} ${item.description || ""}`.toLocaleLowerCase("it").includes(term)));
     meta.textContent = `${filtered.length} trattament${filtered.length === 1 ? "o visibile" : "i visibili"}`;
     grid.innerHTML = filtered.length ? filtered.map(item => `<article class="price-card">
-      <div><div class="price-card__category">${item.category}</div><h3>${item.name}</h3>${item.duration ? `<p class="price-card__duration">Durata: ${item.duration}</p>` : ""}</div>
-      <div class="price-card__bottom"><span class="price-card__price">${item.price}</span><div class="price-card__actions"><button class="btn btn--outline btn--small" type="button" data-whatsapp-service="${item.bewellyId}" aria-label="Chiedi informazioni su ${item.name} via WhatsApp">WhatsApp</button><button class="btn btn--small" type="button" data-book="${item.bewellyId}" aria-label="Prenota ${item.name} su Bewelly">Prenota</button></div></div>
+      <div><div class="price-card__category">${escapeHtml(item.category)}</div><h3>${escapeHtml(item.name)}</h3>${item.duration ? `<p class="price-card__duration">Durata: ${escapeHtml(item.duration)}</p>` : ""}${item.description ? `<p class="price-card__description">${escapeHtml(item.description)}</p>` : ""}</div>
+      <div class="price-card__bottom"><span class="price-card__price">${escapeHtml(item.price)}</span><div class="price-card__actions"><button class="btn btn--outline btn--small" type="button" data-whatsapp-service="${item.bewellyId}" aria-label="Chiedi informazioni su ${escapeHtml(item.name)} via WhatsApp">WhatsApp</button><button class="btn btn--small" type="button" data-book="${item.bewellyId}" aria-label="Prenota ${escapeHtml(item.name)} su Bewelly">Prenota</button></div></div>
     </article>`).join("") : `<div class="empty-state"><h3>Nessun trattamento trovato</h3><p>Prova un'altra parola o torna a tutte le categorie.</p></div>`;
   }
   search.addEventListener("input", render);
@@ -309,7 +283,7 @@ function setupPriceList() {
     const bookingButton = event.target.closest("[data-book]");
     if (bookingButton) {
       const service = SERVICES.find(item => item.bewellyId === Number(bookingButton.dataset.book));
-      openBooking(service, bookingButton);
+      openBooking(service);
       return;
     }
     const whatsappButton = event.target.closest("[data-whatsapp-service]");
@@ -338,10 +312,14 @@ function renderBookingLoadingPage(popup, service) {
       *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#f4f7f5;color:#244f50;font-family:Montserrat,Arial,sans-serif}
       main{width:min(440px,100%);padding:36px 28px;border:1px solid #d6e0dc;border-radius:24px;background:#fff;box-shadow:0 18px 50px rgba(36,79,80,.14);text-align:center}
       img{width:190px;max-width:70%;height:auto;margin:0 auto 28px}.loader{width:52px;height:52px;margin:0 auto 24px;border:5px solid #dfeae5;border-top-color:#427070;border-radius:50%;animation:spin .8s linear infinite}
-      h1{margin:0 0 10px;font-size:clamp(24px,6vw,34px);line-height:1.08}p{margin:0;color:#5f6b68;line-height:1.55}.service{margin-top:18px;padding:12px;border-radius:12px;background:#eef3f1;color:#244f50;font-weight:800}
+      h1{margin:0 0 10px;font-size:clamp(24px,6vw,34px);line-height:1.08}p{margin:0;color:#5f6b68;line-height:1.55}.service{margin-top:18px;padding:12px;border-radius:12px;background:#eef3f1;color:#244f50;font-weight:800}.fallback{margin-top:18px;font-size:.86rem}.fallback a{color:#244f50;font-weight:800}
       @keyframes spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.loader{animation:none;border-top-color:#dfeae5;box-shadow:inset 0 0 0 8px #427070}}
     `;
-    doc.head.replaceChildren(viewport, style);
+    const fallbackRedirect = doc.createElement("meta");
+    fallbackRedirect.httpEquiv = "refresh";
+    fallbackRedirect.content = `8;url=${BUSINESS.bookingCartUrl}`;
+
+    doc.head.replaceChildren(viewport, fallbackRedirect, style);
 
     const main = doc.createElement("main");
     main.setAttribute("role", "status");
@@ -367,14 +345,22 @@ function renderBookingLoadingPage(popup, service) {
     selected.className = "service";
     selected.textContent = service?.name || "Trattamento Epilfast";
 
-    main.append(logo, loader, title, copy, selected);
+    const fallback = doc.createElement("p");
+    fallback.className = "fallback";
+    const fallbackLink = doc.createElement("a");
+    fallbackLink.href = BUSINESS.bookingCartUrl;
+    fallbackLink.textContent = "Continua manualmente su Bewelly";
+    fallback.append(fallbackLink);
+
+    main.append(logo, loader, title, copy, selected, fallback);
     doc.body.replaceChildren(main);
+
   } catch {
     /* Il flusso di prenotazione continua anche se il browser limita il popup. */
   }
 }
 
-function openBooking(service, trigger) {
+function openBooking(service) {
   if (!service?.bewellyId) {
     window.open(BUSINESS.bookingUrl, "_blank", "noopener");
     return;
@@ -387,15 +373,14 @@ function openBooking(service, trigger) {
     return;
   }
 
-  const originalLabel = trigger?.textContent;
-  if (trigger) {
-    trigger.disabled = true;
-    trigger.setAttribute("aria-busy", "true");
-    trigger.textContent = "Aggiungo al carrello…";
-  }
-
   renderBookingLoadingPage(popup, service);
 
+  /*
+   * Bewelly espone l'aggiunta al carrello come POST che risponde con JSON.
+   * Il POST avviene nel popup per mantenere la sessione Bewelly di prima parte.
+   * La pagina Epilfast resta intatta e controlla quando la risposta e arrivata,
+   * sostituendola subito con il carrello ufficiale.
+   */
   const form = document.createElement("form");
   form.method = "POST";
   form.action = BUSINESS.bookingAddUrl;
@@ -414,34 +399,33 @@ function openBooking(service, trigger) {
     form.append(input);
   });
   document.body.append(form);
-  form.submit();
-  form.remove();
 
-  /*
-   * Bewelly answers the cart POST with technical JSON. Keep that response in
-   * the background, then reuse the same first-party popup for the cart so its
-   * PHP session cookie and the selected service remain intact.
-   */
-  try {
-    popup.blur();
-    window.focus();
-  } catch {}
-
-  window.setTimeout(() => {
-    if (!popup.closed) {
-      try {
-        popup.location = BUSINESS.bookingCartUrl;
-        popup.focus();
-      } catch {
-        window.open(BUSINESS.bookingCartUrl, popupName);
+  const startedAt = Date.now();
+  let cartOpened = false;
+  const openCart = () => {
+    if (cartOpened || popup.closed) return;
+    cartOpened = true;
+    popup.location = BUSINESS.bookingCartUrl;
+    window.setTimeout(() => popup.focus(), 350);
+  };
+  const waitForBewelly = () => {
+    try {
+      if (popup.location.origin !== location.origin) {
+        window.setTimeout(openCart, 900);
+        return;
       }
+    } catch {
+      window.setTimeout(openCart, 900);
+      return;
     }
-    if (trigger) {
-      trigger.disabled = false;
-      trigger.removeAttribute("aria-busy");
-      trigger.textContent = originalLabel;
-    }
-  }, 1900);
+    if (Date.now() - startedAt >= 4000) openCart();
+    else window.setTimeout(waitForBewelly, 80);
+  };
+
+  form.submit();
+  window.focus();
+  window.setTimeout(waitForBewelly, 80);
+  window.setTimeout(() => form.remove(), 12000);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
