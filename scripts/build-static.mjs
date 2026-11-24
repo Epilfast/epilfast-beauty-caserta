@@ -27,6 +27,10 @@ for (const file of files) {
   await cp(join(root, file), join(dist, file));
 }
 await cp(join(root, "listino.html"), join(dist, "listino-epilazione-laser.html"));
+const listinoLegacy = join(dist, "listino-epilazione-laser");
+await mkdir(listinoLegacy);
+const listino = await readFile(join(root, "listino.html"), "utf8");
+await writeFile(join(listinoLegacy, "index.html"), listino.replace("<head>", '<head><base href="../">'), "utf8");
 await cp(join(root, "legal.html"), join(dist, "privacy.html"));
 await cp(join(root, "legal.html"), join(dist, "privacy-policy.html"));
 await cp(join(root, "legal.html"), join(dist, "cookie-policy.html"));

@@ -1,5 +1,5 @@
 /* Catalogo pubblico Bewelly Epilfast, sincronizzato da https://www.bewelly.it/4290/.
- * Totale: 116. Generato: 2026-11-24T08:00:42.005Z.
+ * Totale: 116. Generato: 2026-11-24T19:44:18.126Z.
  */
 globalThis.EPILFAST_SERVICES = Object.freeze([
   {
