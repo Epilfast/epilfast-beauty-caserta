@@ -15,6 +15,7 @@ const files = [
   "vip.html",
   "robots.txt",
   "sitemap.xml",
+  "CNAME",
   "404.html",
   "_headers"
 ];
