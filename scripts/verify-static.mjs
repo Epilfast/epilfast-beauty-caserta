@@ -18,6 +18,16 @@ if (!services.some(service => service.name === "Epilazione laser Total Body")) {
   throw new Error("Servizi laser estesi non presenti");
 }
 
+const bookingScript = await readFile(join(root, "assets", "site.js"), "utf8");
+for (const expected of [
+  'bookingAddUrl: "https://www.bewelly.it/store_ajax.php"',
+  'action: "add_service"',
+  'trigger.textContent = "Apro Bewelly…"',
+  "window.setTimeout(openCart, 2600)",
+]) {
+  if (!bookingScript.includes(expected)) throw new Error(`Flusso Bewelly incompleto: manca ${expected}`);
+}
+
 const pages = ["index.html", "chi-siamo.html", "contatti.html", "listino.html", "legal.html", "promo.html", "shop.html", "vip.html"];
 for (const page of pages) {
   const html = await readFile(join(root, page), "utf8");

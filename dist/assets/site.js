@@ -283,7 +283,7 @@ function setupPriceList() {
     const bookingButton = event.target.closest("[data-book]");
     if (bookingButton) {
       const service = SERVICES.find(item => item.bewellyId === Number(bookingButton.dataset.book));
-      openBooking(service);
+      openBooking(service, bookingButton);
       return;
     }
     const whatsappButton = event.target.closest("[data-whatsapp-service]");
@@ -360,15 +360,29 @@ function renderBookingLoadingPage(popup, service) {
   }
 }
 
-function openBooking(service) {
+function openBooking(service, trigger) {
   if (!service?.bewellyId) {
     window.open(BUSINESS.bookingUrl, "_blank", "noopener");
     return;
   }
 
+  const originalLabel = trigger?.textContent || "Prenota";
+  const restoreTrigger = () => {
+    if (!trigger) return;
+    trigger.disabled = false;
+    trigger.removeAttribute("aria-busy");
+    trigger.textContent = originalLabel;
+  };
+  if (trigger) {
+    trigger.disabled = true;
+    trigger.setAttribute("aria-busy", "true");
+    trigger.textContent = "Apro Bewelly…";
+  }
+
   const popupName = "epilfast-bewelly-booking";
   const popup = window.open("about:blank", popupName);
   if (!popup) {
+    restoreTrigger();
     window.open(BUSINESS.bookingUrl, "_blank", "noopener");
     return;
   }
@@ -406,19 +420,23 @@ function openBooking(service) {
     if (cartOpened || popup.closed) return;
     cartOpened = true;
     popup.location = BUSINESS.bookingCartUrl;
+    restoreTrigger();
     window.setTimeout(() => popup.focus(), 350);
   };
   const waitForBewelly = () => {
     try {
       if (popup.location.origin !== location.origin) {
-        window.setTimeout(openCart, 900);
+        // La risposta JSON resta nella scheda in secondo piano. Lasciamo al
+        // POST il tempo di aggiornare la sessione prima di aprire il carrello,
+        // evitando sia il JSON visibile sia un carrello ancora vuoto.
+        window.setTimeout(openCart, 2600);
         return;
       }
     } catch {
-      window.setTimeout(openCart, 900);
+      window.setTimeout(openCart, 2600);
       return;
     }
-    if (Date.now() - startedAt >= 4000) openCart();
+    if (Date.now() - startedAt >= 6000) openCart();
     else window.setTimeout(waitForBewelly, 80);
   };
 
