@@ -68,7 +68,10 @@ function footerTemplate() {
 function injectChrome() {
   const header = document.querySelector("#site-header");
   const footer = document.querySelector("#site-footer");
-  if (header) header.innerHTML = headerTemplate();
+  if (header) {
+    header.innerHTML = headerTemplate();
+    header.querySelector(".skip-link").href = `${location.pathname}${location.search}#main`;
+  }
   if (footer) footer.outerHTML = footerTemplate();
   const toggle = document.querySelector(".menu-toggle");
   const menuBackground = () => [document.querySelector("#main"), document.querySelector(".site-footer"), document.querySelector(".topline"), document.querySelector(".brand"), document.querySelector(".whatsapp-signature"), document.querySelector(".consent-banner")];
@@ -326,7 +329,7 @@ function renderBookingLoadingPage(popup, service) {
     main.setAttribute("aria-live", "polite");
 
     const logo = doc.createElement("img");
-    logo.src = new URL("assets/epilfast-logo.webp", location.href).href;
+    logo.src = new URL("assets/epilfast-logo.webp", document.baseURI).href;
     logo.alt = "Epilfast Beauty Caserta";
     logo.width = 190;
     logo.height = 74;

@@ -32,7 +32,7 @@ const pages = ["index.html", "chi-siamo.html", "contatti.html", "listino.html", 
 for (const page of pages) {
   const html = await readFile(join(root, page), "utf8");
   const servicesIndex = html.indexOf("assets/services.js?v=20261124-6");
-  const siteIndex = html.indexOf("assets/site.js?v=20261124-6");
+  const siteIndex = html.indexOf("assets/site.js?v=20261124-7");
   if (servicesIndex < 0 || siteIndex < 0 || servicesIndex > siteIndex) {
     throw new Error(`${page}: catalogo mancante o caricato dopo site.js`);
   }
