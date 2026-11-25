@@ -1,3 +1,38 @@
+.home-laser .hero__grid {
+  min-height: 0;
+  gap: clamp(1.75rem, 4vw, 4rem);
+  padding-block: clamp(2.1rem, 5.5vw, 5rem);
+}
+.home-laser h1 {
+  font-size: clamp(2.8rem, 6vw, 5.6rem);
+}
+.home-laser__offer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem 1rem;
+  margin: 1.2rem 0 1.45rem;
+  color: var(--petrol-dark);
+  font-size: 1.13rem;
+  font-weight: 800;
+}
+.home-laser__offer strong {
+  font-size: clamp(2.25rem, 4vw, 3.65rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.home-laser .hero__visual {
+  min-height: clamp(270px, 30vw, 430px);
+}
+.home-laser .hero__panel {
+  inset: 0;
+}
+@media (max-width: 680px) {
+  .home-laser .hero__visual {
+    min-height: clamp(180px, 49vw, 260px);
+  }
+}
+
 .offers-hero {
   background: linear-gradient(110deg, #faf6ed 0%, var(--mist) 80%);
 }

@@ -13,6 +13,7 @@ const routes = new Map([
   ["/chi-siamo", "chi-siamo.html"], ["/chi-siamo.html", "chi-siamo.html"],
   ["/contatti", "contatti.html"], ["/contatti.html", "contatti.html"],
   ["/listino-epilazione-laser", "listino.html"], ["/listino", "listino.html"], ["/listino.html", "listino.html"],
+  ["/promo", "promo.html"], ["/promo.html", "promo.html"],
   ["/privacy", "legal.html"], ["/privacy-policy", "legal.html"], ["/cookie-policy", "legal.html"], ["/legal.html", "legal.html"]
 ]);
 

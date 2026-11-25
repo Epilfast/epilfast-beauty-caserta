@@ -38,4 +38,17 @@ for (const page of pages) {
   }
 }
 
+const laserPrices = /<ul class="offers-pricelist" aria-label="Combinazioni laser e prezzi">([\s\S]*?)<\/ul>/;
+const [homepage, promoPage] = await Promise.all(
+  ["index.html", "promo.html"].map(page => readFile(join(root, page), "utf8")),
+);
+const homepagePrices = homepage.match(laserPrices)?.[1].replaceAll("\r\n", "\n").trim();
+const promoPrices = promoPage.match(laserPrices)?.[1].replaceAll("\r\n", "\n").trim();
+if (!homepagePrices || homepagePrices !== promoPrices) {
+  throw new Error("I listini laser in homepage e sulla pagina promozioni devono coincidere");
+}
+if (!homepage.includes('<a class="btn" href="#prezzi-laser">') || !homepage.includes('id="prezzi-laser"')) {
+  throw new Error("Il collegamento al listino laser in homepage è incompleto");
+}
+
 console.log(`QA statico superato: ${services.length} servizi, ${ids.size} ID univoci, ${pages.length} pagine versionate`);
