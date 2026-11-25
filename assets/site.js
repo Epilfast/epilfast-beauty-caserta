@@ -13,7 +13,7 @@ const BUSINESS = {
 const SERVICES = globalThis.EPILFAST_SERVICES || [];
 
 const navItems = [
-  ["index.html","Home"],["chi-siamo.html","Chi siamo"],["listino.html","Listino"],["contatti.html","Contatti"],["legal.html","Privacy"]
+  ["index.html","Home"],["chi-siamo.html","Chi siamo"],["listino.html","Listino"],["promo.html","Promo"],["contatti.html","Contatti"],["legal.html","Privacy"]
 ];
 
 const CONSENT_KEY = "epilfast_consent_v1";
@@ -57,7 +57,7 @@ function footerTemplate() {
   return `<footer class="site-footer"><div class="container">
     <div class="footer-grid">
       <div><img class="footer-brand" src="assets/epilfast-logo.webp" width="230" height="90" alt="Epilfast Beauty Caserta"><p>Estetica avanzata a Caserta. Una nuova esperienza digitale, costruita sui servizi reali del centro.</p></div>
-      <div><h3>Esplora</h3><div class="footer-links"><a href="listino.html">Listino e prenotazioni</a><a href="chi-siamo.html">Chi siamo</a><a href="contatti.html">Contatti</a><a href="legal.html">Privacy e cookie</a></div></div>
+      <div><h3>Esplora</h3><div class="footer-links"><a href="listino.html">Listino e prenotazioni</a><a href="promo.html">Promo</a><a href="chi-siamo.html">Chi siamo</a><a href="contatti.html">Contatti</a><a href="legal.html">Privacy e cookie</a></div></div>
       <div><h3>Contatti</h3><div class="footer-links"><a href="tel:+${BUSINESS.phone}">${BUSINESS.phoneDisplay}</a><a href="https://maps.google.com/?q=Via+Ferrarecce+189+Caserta" target="_blank" rel="noopener">${BUSINESS.address}</a><a href="${BUSINESS.instagram}" target="_blank" rel="noopener">Instagram</a><a href="legal.html#privacy">Privacy Policy</a><a href="legal.html#cookie">Cookie Policy</a><button class="footer-cookie-button" type="button" data-cookie-settings>Preferenze cookie</button></div></div>
     </div>
     <div class="footer-legal" aria-label="Dati legali dell'impresa"><strong>Francesco De Tito · impresa individuale</strong><span>P. IVA 04366440610 · C.F. DTTFNC69H30F839E · REA CE-333349</span><span>Sede legale: Via Ferrarecce 189, 81100 Caserta (CE)</span><a href="mailto:francesco.detito@legalmail.it">PEC: francesco.detito@legalmail.it</a></div>
@@ -111,6 +111,12 @@ function injectChrome() {
 
 function whatsappUrl(message) {
   return `https://wa.me/${BUSINESS.phone}?text=${encodeURIComponent(message)}`;
+}
+
+function setPromoInquiryLinks() {
+  document.querySelectorAll("a[data-promo-inquiry]").forEach(link => {
+    link.href = whatsappUrl(`Ciao Epilfast Beauty, vorrei informazioni sulla promozione ${link.dataset.promoInquiry}.`);
+  });
 }
 
 function escapeHtml(value) {
@@ -452,6 +458,7 @@ function openBooking(service, trigger) {
 document.addEventListener("DOMContentLoaded", () => {
   injectChrome();
   injectWhatsAppSignature();
+  setPromoInquiryLinks();
   setupConsentManager();
   setupPriceList();
 });

@@ -1,0 +1,140 @@
+.offers-hero {
+  background: linear-gradient(110deg, #faf6ed 0%, var(--mist) 80%);
+}
+.offers-hero h1 {
+  max-width: none;
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+}
+.offers-nav {
+  margin-top: 1.35rem;
+}
+.offers-section {
+  padding-block: clamp(2.75rem, 5.5vw, 5rem);
+  scroll-margin-top: 9rem;
+}
+.offers-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border: 1px solid #dfd2bd;
+  border-radius: var(--radius);
+  background: #faf6ed;
+}
+.offers-feature__visual {
+  position: relative;
+  aspect-ratio: 1634 / 650;
+  overflow: hidden;
+}
+.offers-feature__visual img {
+  position: absolute;
+  top: 0;
+  left: -6.8%;
+  width: 113.6%;
+  max-width: none;
+  transform: translateY(-32.9%);
+}
+.offers-feature__body {
+  padding: clamp(1.25rem, 3.1vw, 2.5rem);
+}
+.offers-feature__body h3 {
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+}
+.offers-feature--laser {
+  grid-template-columns: minmax(0, 1fr) auto;
+  background: var(--petrol-dark);
+  color: var(--paper);
+}
+.offers-feature--laser h2 {
+  font-size: clamp(1.75rem, 4.2vw, 3.5rem);
+}
+.offers-feature--laser p {
+  margin-bottom: 0;
+}
+.offers-price {
+  display: block;
+  margin-bottom: .75rem;
+  color: var(--petrol-dark);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+.offers-feature--laser .offers-price {
+  color: #f5deaa;
+}
+.offers-grid,
+.offers-pricelist {
+  display: grid;
+  gap: 1rem;
+}
+.offers-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.offers-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1rem, 2vw, 1.45rem);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--paper);
+}
+.offers-card p {
+  flex: 1;
+}
+.offers-pricelist {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.offers-pricelist .offers-price-link {
+  display: flex;
+  justify-content: space-between;
+  gap: .8rem;
+  min-height: 3.5rem;
+  padding: .6rem .9rem;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  background: var(--paper);
+  text-decoration: none;
+}
+.offers-price-link:hover {
+  border-color: var(--sage);
+  text-decoration: underline;
+  text-underline-offset: .16em;
+}
+.offers-price-link strong {
+  color: var(--petrol-dark);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.holiday-promos {
+  display: none;
+}
+.epilfast-christmas section.holiday-promos {
+  display: block;
+  background: #faf6ed;
+}
+.epilfast-christmas .btn.holiday-promos {
+  display: inline-flex;
+}
+@media (max-width: 900px) {
+  .offers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .offers-feature,
+  .offers-grid,
+  .offers-pricelist {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .offers-feature--laser .offers-feature__body + .offers-feature__body {
+    padding-top: 0;
+  }
+  .offers-pricelist {
+    gap: .55rem;
+  }
+}
